@@ -1,0 +1,182 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Month
+{
+private: 
+	int monthInt;
+	string monthString;
+	string monthName;
+
+public:
+	Month();
+	Month(int monthInt);
+	Month(string monthName);
+
+	void inputInt();
+	void inputString();
+	string intString(int monthInt);
+	int stringInt(string monthName);
+	void outputInt();
+	void outputString();
+};
+
+int main()
+{
+	Month month1;
+
+	cout << "Please enter the month as a string (January, February, etc.): ";
+	month1.inputString();
+	cout << "That month expressed as an integer is: ";
+	month1.outputInt();
+	cout << endl;
+
+	cout << "Please enter the month as an integer (1-12): ";
+	month1.inputInt();
+	cout << "That month expressed as a string is: ";
+	month1.outputString();
+
+	cin.ignore(' ');
+	return 0;
+}
+
+Month::Month(string monthName)
+{
+	monthInt = stringInt(monthName);
+	monthString = intString(monthInt);
+}
+
+Month::Month(int monthInt)
+{
+	monthString = intString(monthInt);
+}
+
+Month::Month()
+{
+	monthInt = 1;
+	monthString = "Jan\n";
+}
+
+void Month::inputInt()
+{
+	cin >> monthInt;
+	monthString = intString(monthInt);
+}
+
+void Month::inputString()
+{
+	cin >> monthName;
+	monthInt = stringInt(monthName);
+}
+
+void Month::outputString()
+{
+	cout << monthString;
+}
+
+void Month::outputInt()
+{
+	cout << monthInt;
+}
+
+int Month::stringInt(string monthName)
+{
+	if ((monthName == "january") || (monthName == "January"))
+	{
+		monthInt = 1;
+	}
+	else if ((monthName == "february") || (monthName == "February"))
+	{
+		monthInt = 2;
+	}
+	else if ((monthName == "march") || (monthName == "March"))
+	{
+		monthInt = 3;
+	}
+	else if ((monthName == "april") || (monthName == "April"))
+	{
+		monthInt = 4;
+	}
+	else if ((monthName == "may") || (monthName == "May"))
+	{
+		monthInt = 5;
+	}
+	else if ((monthName == "june") || (monthName == "June"))
+	{
+		monthInt = 6;
+	}
+	else if ((monthName == "july") || (monthName == "July"))
+	{
+		monthInt = 7;
+	}
+	else if ((monthName == "august") || (monthName == "August"))
+	{
+		monthInt = 8;
+	}
+	else if ((monthName == "september") || (monthName == "September"))
+	{
+		monthInt = 9;
+	}
+	else if ((monthName == "october") || (monthName == "October"))
+	{
+		monthInt = 10;
+	}
+	else if ((monthName == "november") || (monthName == "November"))
+	{
+		monthInt = 11;
+	}
+	else if ((monthName == "december") || (monthName == "December"))
+	{
+		monthInt = 12;
+	}
+	return monthInt;
+}
+string Month::intString(int monthInt)
+{
+	string monthString;
+	switch (monthInt)
+	{
+	case 1:
+		monthString = "January\n";
+		break;
+	case 2:
+		monthString = "February\n";
+		break;
+	case 3:
+		monthString = "March\n";
+		break;
+	case 4:
+		monthString = "April\n";
+		break;
+	case 5:
+		monthString = "May\n";
+		break;
+	case 6:
+		monthString = "June\n";
+		break;
+	case 7:
+		monthString = "July\n";
+		break;
+	case 8:
+		monthString = "August\n";
+		break;
+	case 9:
+		monthString = "September\n";
+		break;
+	case 10:
+		monthString = "October\n";
+		break;
+	case 11:
+		monthString = "November\n";
+		break;
+	case 12:
+		monthString = "December\n";
+		break;
+	default:
+		monthString = "The integer value cannot exceed 12";
+		break;
+
+	}
+	return monthString;
+}
